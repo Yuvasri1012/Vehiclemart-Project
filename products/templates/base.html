@@ -1,0 +1,96 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VehicleMart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/product.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">VehicleMart</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="#">Vehicles</a></li>
+        <li><a href="#">Category</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'contact' %}">Contact</a></li>
+      </ul>
+      <div class="nav-buttons">
+        <a href="{% url 'cart' %}" class="wholecart">
+          <span>🛒 {{ request.session.cart|length|default:0 }}</span>
+        </a>
+
+        {% if request.session.role == 'admin' %}
+        <a href="{% url 'add_product' %}" class="btn add-product">
+          Add Product
+        </a>
+        {% endif %}
+
+      </div>
+    </nav>
+    {% if messages %}
+    <div class="message-box">
+      {% for message in messages %}
+      <p>{{ message }}</p>
+      {% endfor %}
+    </div>
+    {% endif %} {% block hero %}{% endblock hero %}
+    <div class="content">{% block content %}{% endblock content %}</div>
+
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>VehicleMart</h3>
+          <p>Your trusted platform to buy and sell vehicles easily.</p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <a href="#">Home</a>
+          <a href="#">Vehicles</a>
+          <a href="#">Contact</a>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: support@vehiclemart.com</p>
+          <p>Phone: +91 98765 43210</p>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 VehicleMart. All Rights Reserved.</div>
+    </footer>
+
+    <script>
+      setTimeout(() => {
+        const msg = document.querySelector(".message-box");
+        if (msg) msg.style.display = "none";
+      }, 1000);
+
+      window.addEventListener("load", () => {
+        const reveals = document.querySelectorAll(".reveal");
+
+        reveals.forEach((el, index) => {
+          setTimeout(() => {
+            el.classList.add("active");
+          }, index * 200); // 🔥 delay (one by one)
+        });
+      });
+
+      const text = "Welcome To VehicleMart";
+      let index = 0;
+
+      function typeEffect() {
+        if (index < text.length) {
+          document.getElementById("typing-text").innerHTML +=
+            text.charAt(index);
+          index++;
+          setTimeout(typeEffect, 50); // speed control
+        }
+      }
+
+      window.onload = typeEffect;
+    </script>
+  </body>
+</html>

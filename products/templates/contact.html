@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contact-container">
+
+  <h2 class="contact-title">Contact VehicleMart</h2>
+
+  <div class="contact-grid">
+
+    <div class="contact-info">
+      <h3>Get in Touch</h3>
+      <p>Email: support@vehiclemart.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Address: Madurai, Tamil Nadu, India</p>
+    </div>
+
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<div class="add-container">
+  <a href="{% url 'home' %}" class="close-btn">✖</a>
+
+  <h2 class="add-title">
+    {% if product %}Edit Product{% else %}Add Product{% endif %}
+  </h2>
+
+  <form method="POST" enctype="multipart/form-data" class="add-form">
+    {% csrf_token %}
+
+    <label>Product Name</label>
+    <input type="text" name="name" required value="{{ product.name }}" />
+
+    <label>Product Price</label>
+    <input type="text" name="price" required value="{{ product.price }}" />
+
+    <label>Vehicle Image URL</label>
+    <input type="text" name="image" value="{{ product.vechicle_image }}" />
+
+    <label>Category</label>
+    <select name="category" required>
+      <option value="">Select Category</option>
+       {% for cat in categories %}
+      <option value="{{ cat.id }}"
+        {% if product and cat.id == product.category.id %} selected {% endif %}>
+        {{ cat.name }}
+      </option>
+    {% endfor %} 
+    </select>
+    <button type="submit">
+      {% if product %}Update Product{% else %}Add Product{% endif %}
+    </button>
+  </form>
+</div>
+
+{% endblock %}

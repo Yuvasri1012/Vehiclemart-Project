@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block hero %}
+<h1 id="typing-text"></h1>
+{% endblock hero %}
+
+{% block content %}
+
+<div class="product-grid">
+  {% for product in products %}
+  <div class="product-card">
+
+    <!-- ✅ ADMIN ACTIONS -->
+{% if request.user.is_authenticated and request.session.role == 'admin' %}
+ <div class="card-actions">
+  
+  <a href="{% url 'edit_product' product.id %}" class="edit-btn">✏️</a>
+
+  <form action="{% url 'delete_product' product.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="delete-btn">🗑️</button>
+  </form>
+
+</div>
+{% endif %}
+
+    <!-- PRODUCT IMAGE -->
+    <img src="{{ product.vechicle_image }}" />
+
+    <!-- ADD TO CART -->
+    <form action="{% url 'add_to_cart' product.id %}" method="POST">
+      {% csrf_token %}
+      <button type="submit" class="cart-btn">Add to Cart</button>
+    </form>
+
+    <h3>{{ product.name }}</h3>
+    <!-- <p>₹ {{ product.price }}</p> -->
+     {% load humanize %}
+    <p>₹ {{ product.price|intcomma }}</p>
+
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}
