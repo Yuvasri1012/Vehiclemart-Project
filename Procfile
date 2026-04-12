@@ -1,1 +1,1 @@
-web: gunicorn vehiclamart.wsgi
+web: gunicorn vehiclemart.wsgi:application
