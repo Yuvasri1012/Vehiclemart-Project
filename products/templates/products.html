@@ -11,7 +11,7 @@
   <div class="product-card">
 
     <!-- ✅ ADMIN ACTIONS -->
-{% if request.user.is_authenticated and request.session.role == 'admin' %}
+{% if request.session.role == 'admin' %}
  <div class="card-actions">
   
   <a href="{% url 'edit_product' product.id %}" class="edit-btn">✏️</a>

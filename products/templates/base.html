@@ -4,12 +4,21 @@
   <head>
     <meta charset="UTF-8" />
     <title>VehicleMart</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'images/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/product.css' %}" />
   </head>
   <body>
     <nav class="navbar">
-      <div class="logo">VehicleMart</div>
+      <div class="nav-left">
+        <img
+          src="{% static 'images/vehiclemart-logo.jpg' %}"
+          class="logo-circle"
+          alt="VehicleMart Logo"
+        />
+        <div class="brand">VehicleMart</div>
+      </div>
+
       <ul class="nav-links">
         <li><a href="{% url 'home' %}">Home</a></li>
         <li><a href="#">Vehicles</a></li>
@@ -17,17 +26,25 @@
         <li><a href="{% url 'about' %}">About</a></li>
         <li><a href="{% url 'contact' %}">Contact</a></li>
       </ul>
+
       <div class="nav-buttons">
-        <a href="{% url 'cart' %}" class="wholecart">
-          <span>🛒 {{ request.session.cart|length|default:0 }}</span>
+        <a href="{% url 'cart' %}" class="cart-link">
+          <div class="cart-wrapper">
+            <svg class="cart-icon" viewBox="0 0 24 24">
+              <path
+                d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.44C7.52 17.37 8.48 19 10 19h9v-2h-9l1.1-2h7.45c.75 0 1.41.41 1.75-1.03L23 6H6.21l-.94-2z"
+              />
+            </svg>
+            <span class="cart-badge">
+              {{ request.session.cart|length|default:0 }}
+            </span>
+          </div>
+          <span class="cart-text">Cart</span>
         </a>
 
         {% if request.session.role == 'admin' %}
-        <a href="{% url 'add_product' %}" class="btn add-product">
-          Add Product
-        </a>
+        <a href="{% url 'add_product' %}" class="add-product"> Add Product </a>
         {% endif %}
-
       </div>
     </nav>
     {% if messages %}

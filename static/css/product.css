@@ -11,35 +11,56 @@ body {
   min-height: 100vh;
 }
 
-/* Navbar */
+/* NAVBAR */
 .navbar {
   background: linear-gradient(135deg, #1e3c72, #2a5298);
-  padding: 15px 60px;
+  padding: 12px 50px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-.logo {
+/* LEFT SIDE */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-circle {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 5px;
+  background: #000;
+  border: 3px solid #d4a017;
+}
+
+.brand {
   font-size: 26px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 1px;
 }
 
+/* CENTER LINKS */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links a {
   text-decoration: none;
   color: white;
   font-size: 16px;
+  font-weight: 500;
   transition: 0.3s;
 }
 
@@ -47,29 +68,87 @@ body {
   color: #ffd700;
 }
 
-.nav-buttons .btn {
-  text-decoration: none;
-  padding: 8px 18px;
-  margin-left: 10px;
-  border-radius: 4px;
-  font-size: 14px;
-  transition: 0.3s;
+/* RIGHT SIDE */
+.nav-buttons{
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.add-product {
+/* Cart link - no background */
+.cart-link{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.cart-icon{
+  width: 22px;
+  height: 22px;
+  width: 22px;
+  height: 22px;
+  fill: white;   /* 🔥 color change here */
+}
+
+
+.cart-link{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+}
+
+/* wrapper for badge positioning */
+.cart-wrapper{
+  position: relative;
+}
+
+/* icon */
+.cart-icon{
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+/* badge */
+.cart-badge{
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: hwb(0 3% 97%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* text */
+.cart-text{
+  font-size: 16px;
+}
+
+
+/* Add product button */
+.add-product{
   background: #ffd700;
   color: black;
+  padding: 10px 18px;
+  border-radius: 6px;
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  font-size: 14px;
-  transition: 0.3s;
-  font-weight: bold;
-}
-
-.add-product:hover {
-  background: white;
-  color: #1e3c72;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
 }
 
 /* Footer */
