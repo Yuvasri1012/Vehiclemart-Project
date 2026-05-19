@@ -28,21 +28,16 @@ def add_product(request):
         try:                                          # ← 8 spaces indent
             name = request.POST.get('name')
             price = request.POST.get('price')
-            image = request.POST.get('image')
+            image = request.FILES.get('image')   # ✅ FILES use பண்ணு
             category_id = request.POST.get('category')
-
-            print("name:", name)
-            print("price:", price)
-            print("image:", image)
-            print("category_id:", category_id)
-
+            
             category = Category.objects.get(id=category_id)
 
             Product.objects.create(
-                name=name,
-                price=price,
-                vechicle_image=image,
-                category=category
+            name=name,
+            price=price,
+            vechicle_image=image,            # ✅ file object directly
+            category=category
             )
 
             messages.success(request, "Product Added Successfully ✅")
@@ -71,7 +66,10 @@ def edit_product(request, id):
     if request.method == "POST":
         product.name = request.POST.get('name')
         product.price = request.POST.get('price')
-        product.vechicle_image = request.POST.get('image')
+  
+        image = request.FILES.get('image')       # ✅ FILES use பண்ணு
+    if image:                                # ✅ புதுசா upload பண்ணா மட்டும் update
+        product.vechicle_image = image
 
         category_id = request.POST.get('category')
         product.category = Category.objects.get(id=category_id)

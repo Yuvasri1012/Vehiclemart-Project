@@ -16,18 +16,37 @@
     <label>Product Price</label>
     <input type="text" name="price" required value="{{ product.price }}" />
 
-    <label>Vehicle Image URL</label>
-    <input type="text" name="image" value="{{ product.vechicle_image }} " placeholder="Image URL" />
+    <label>Vehicle Image</label>
+    {% if product.vechicle_image %}
+    <img
+      src="{{ product.vechicle_image.url }}"
+      width="150"
+      style="display: block; margin-bottom: 8px; border-radius: 8px"
+    />
+    {% endif %}
+    <input type="file" name="image" accept="image/*" />
 
     <label>Category</label>
     <select name="category" required>
       <option value="">Select Category</option>
-       {% for cat in categories %}
-      <option value="{{ cat.id }}"
-        {% if product and cat.id == product.category.id %} selected {% endif %}>
+      {% for cat in categories %}
+      <option
+        value="{{ cat.id }}"
+        {%
+        if
+        product
+        and
+        cat.id=""
+        ="product.category.id"
+        %}
+        selected
+        {%
+        endif
+        %}
+      >
         {{ cat.name }}
       </option>
-    {% endfor %} 
+      {% endfor %}
     </select>
     <button type="submit">
       {% if product %}Update Product{% else %}Add Product{% endif %}

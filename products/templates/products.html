@@ -25,7 +25,7 @@
 {% endif %}
 
     <!-- PRODUCT IMAGE -->
-    <img src="{{ product.vechicle_image }}" />
+    <img src="{{ product.vechicle_image.url }}" class="cart-img" />
 
     <!-- ADD TO CART -->
     <form action="{% url 'add_to_cart' product.id %}" method="POST">
