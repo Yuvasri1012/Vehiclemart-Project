@@ -18,11 +18,8 @@
 
     <label>Vehicle Image</label>
     {% if product.vechicle_image %}
-    <img
-      src="{{ product.vechicle_image.url }}"
-      width="150"
-      style="display: block; margin-bottom: 8px; border-radius: 8px"
-    />
+    <img src="{{ product.vechicle_image.url }}" width="150"
+      style="display:block; margin-bottom:8px; border-radius:8px;" />
     {% endif %}
     <input type="file" name="image" accept="image/*" />
 
@@ -30,24 +27,13 @@
     <select name="category" required>
       <option value="">Select Category</option>
       {% for cat in categories %}
-      <option
-        value="{{ cat.id }}"
-        {%
-        if
-        product
-        and
-        cat.id=""
-        ="product.category.id"
-        %}
-        selected
-        {%
-        endif
-        %}
-      >
+      <option value="{{ cat.id }}"
+        {% if product and cat.id == product.category.id %} selected {% endif %}>
         {{ cat.name }}
       </option>
       {% endfor %}
     </select>
+
     <button type="submit">
       {% if product %}Update Product{% else %}Add Product{% endif %}
     </button>
