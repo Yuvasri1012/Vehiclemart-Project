@@ -66,10 +66,10 @@ def edit_product(request, id):
     if request.method == "POST":
         product.name = request.POST.get('name')
         product.price = request.POST.get('price')
-  
-        image = request.FILES.get('image')       # ✅ FILES use பண்ணு
-    if image:                                # ✅ புதுசா upload பண்ணா மட்டும் update
-        product.vechicle_image = image
+
+        image = request.FILES.get('image')  # ✅ POST block-ல் மட்டும்
+        if image:
+            product.vechicle_image = image
 
         category_id = request.POST.get('category')
         product.category = Category.objects.get(id=category_id)
@@ -78,11 +78,11 @@ def edit_product(request, id):
         messages.success(request, "Product Updated ✅")
         return redirect('home')
 
+    # ✅ GET request — இங்க image variable இல்லாம directly render
     return render(request, 'add_product.html', {
         'product': product,
         'categories': categories
     })
-
 
 # ================= DELETE PRODUCT =================
 def delete_product(request, id):
