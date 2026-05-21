@@ -1,26 +1,62 @@
 # Python
-__pycache__/
-*.pyc
+_pycache_/
+*.py[cod]
 *.pyo
 *.pyd
-
-# Environment
-.myvenv
-venv/
-env/
-
-# Database
-db.sqlite3
-
+*.so
+*.egg
+*.egg-info/
+*.manifest
+*.spec
 # Django
-staticfiles/
+*.pot
+*.pyc
+db.sqlite3
+db.sqlite3-journal
 media/
-
-# Logs
-*.log
-
-# VS Code
+local_settings.py
+# If you use Django migrations but want to ignore compiledpycfilesonly
+# */migrations/_pycache_/
+# Uncomment the next line if you want to ignore all migrations (not
+# recommended for team projects)
+# */migrations/
+# Environments
+.env
+# venv/
+# ENV/
+# env/
+.venv/
+# IDEs
 .vscode/
-
-# Mac
+.idea/
+*.sublime-workspace
+*.sublime-project
+# System files
 .DS_Store
+Thumbs.db
+# Coverage / testing
+.coverage
+.tox/
+nosetests.xml
+coverage.xml
+htmlcov/
+# PyCharm
+*.iml
+*.ipr
+*.iws
+.idea/
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+# Pytest
+.cache/.pytest_cache/
+# Jupyter Notebook
+.ipynb_checkpoints
+# Logs
+logs/
+*.log
+# Other
+*.bak
+*.swp
+*.tmp
